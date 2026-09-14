@@ -7,9 +7,9 @@ Process Hacker memory analysis reveals that StealC Stealer performs process holl
 - **Target Process:** `RuntimeBroker.exe` (PID 14900).
 - **C2 IP Addresses:**
   - `http://87.120.196.171/`
-  - `http://85.251.18/`
+  - `http://95.85.251.18/`
   - `http://193.148.56.97/`
-  - `https://51.77.9.121/`
+  - `https://31.77.9.121/`
 - **Base64 Strings:** Multiple Base64-encoded strings (likely encrypted configuration data).
 
 ### Why This Matters:
@@ -149,14 +149,14 @@ This analysis uncovered **StealC Stealer**, a sophisticated info-stealer that us
 ### Key Takeaways:
 
 - **Process Hollowing:** Injects into `RuntimeBroker.exe` (PID 14900).
-- **C2 Infrastructure:** Multiple IPs (`87.120.196.171`, `85.251.18`, `193.148.56.97`, `51.77.9.121`) and domains (`easyjet.com`, `ebookers.com`, `ecomlead.com`, etc.).
+- **C2 Infrastructure:** Multiple IPs (`87.120.196.171`, `95.85.251.18`, `193.148.56.97`, `31.77.9.121`) and domains (`easyjet.com`, `ebookers.com`, `ecomlead.com`, etc.).
 - **Cookie Theft:** Targets `cookies.sqlite` for browser cookie data.
 - **System Manipulation:** Uses `ShellExecuteExA`, `VirtualAlloc`, `IsWow64Process`, and `GetSystemTimes`.
 - **Data Exfiltration:** `upload_file` and `update_cookies` for sending stolen data.
 
 ### Detection Recommendations:
 
-- Block C2 IPs: `87.120.196.171`, `85.251.18`, `193.148.56.97`, `51.77.9.121`.
+- Block C2 IPs: `87.120.196.171`, `95.85.251.18`, `193.148.56.97`, `31.77.9.121`.
 - Block C2 domains: `easyjet.com`, `ebookers.com`, `ecomlead.com`, etc.
 - Monitor for `cookies.sqlite` access from unusual processes.
 - Detect `ShellExecuteExA` and `VirtualAlloc` calls in `RuntimeBroker.exe`.
